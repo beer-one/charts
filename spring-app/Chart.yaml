@@ -1,0 +1,10 @@
+apiVersion: v2
+name: spring-app
+version: 0.1.0
+appVersion: 0.1.0
+kubeVersion: ">= 1.27.0"
+description: "Spring application server"
+home: https://chart.beerone.com
+maintainers:
+  - name: beerone
+    email: floidea2@gmail.com

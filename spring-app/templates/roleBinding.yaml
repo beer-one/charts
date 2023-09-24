@@ -1,0 +1,51 @@
+{{- $root := . -}}
+
+{{- if .Values.rbac.enabled }}
+{{- if .Values.rbac.roleBinding.autoCreate }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: spring-role-{{ .Values.app.name }}
+  namespace: {{ .Release.Namespace | quote }}
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.app.name }}
+  apiGroup: ""
+roleRef:
+  kind: Role 
+  name: spring-application
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
+---
+{{- range .Values.rbac.roleBinding.additionalRoles }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: "{{ . }}-{{ $root.Values.app.name }}"
+  namespace: {{ $root.Release.Namespace | quote }}
+subjects:
+- kind: ServiceAccount
+  name: {{ $root.Values.app.name }}
+  apiGroup: ""
+roleRef:
+  kind: Role 
+  name: {{ . }}
+  apiGroup: rbac.authorization.k8s.io
+---
+{{- end }}
+{{- range .Values.rbac.roleBinding.additionalClusterRoles }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: "{{ . }}-{{ $root.Values.app.name }}"
+  namespace: {{ $root.Release.Namespace | quote }}
+subjects:
+- kind: ServiceAccount
+  name: {{ $root.Values.app.name }}
+  apiGroup: ""
+roleRef:
+  kind: ClsuterRole 
+  name: {{ . }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
+{{- end }}
