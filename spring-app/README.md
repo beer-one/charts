@@ -27,10 +27,10 @@ SpringBoot 애플리케이션을 배포하는 차트입니다.  차트를 만든
 | `rbac.clusterRoleBinding.clusterRoles` | 적용하고 싶은 이미 존재하는 clusterRole 추가 기입 (clusterRoleBinding) | Array<\String> | N | `[]` |
 | `applicationYamlConfig` | Spring Cloud Kuberentes Config 사용 시 적용시킬 application.yaml을 저장하는 ConfigMap, empty일 경우 생성안함 | Object | N | `{}` |
 | `applicationYamlConfig.name` | application.yaml을 저장하는 ConfigMap 이름 | String | Y |  |
-| `applicationYamlConfig.value` | application.yaml 내용. `|` 을 사용하여 문자열 생성 필수 | String | Y |  |
+| `applicationYamlConfig.value` | application.yaml 내용. `\|` 을 사용하여 문자열 생성 필수 | String | Y |  |
 | `applicationYamlSecret` | Spring Cloud Kuberentes Config 사용 시 적용시킬 application.yaml을 저장하는 Secret, empty일 경우 생성안함 | Object | N | `{}` |
 | `applicationYamlSecret.name` | application.yaml을 저장하는 Secret 이름 | String | Y |  |
-| `applicationYamlSecret.value` | application.yaml 내용. `|` 을 사용하여 문자열 생성 필수 | String | Y |  |
+| `applicationYamlSecret.value` | application.yaml 내용. `\|` 을 사용하여 문자열 생성 필수 | String | Y |  |
 | `ingress.enabled` | 인그레스 사용 여부 | Boolean | N | `false` |
 | `ingress.className` | 인그레스 클래스 이름 | String | N | `nginx` |
 | `ingress.host` | 인그레스에 사용될 호스트 | String | N | `""` |
