@@ -3,27 +3,40 @@
     "properties": {
       "app": {
         "description": "app",
+        "type": "object",
         "properties": {
             "name": {
                 "type": "string"
             },
             "replicas": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0
             },
             "image": {
                 "type": "string"
             },
             "port": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
             },
             "customCommand": {
-                "type": "array"
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }    
             },
             "customArgs": {
-                "type": "array"
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }    
             },
             "env": {
-                "type": "array"
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }    
             },
             "resources": {
                 "type": "object"
@@ -31,7 +44,6 @@
         },
         "required": [
             "name",
-            "replicas",
             "image",
             "port"
         ]
@@ -62,7 +74,9 @@
                 "type": "boolean"
             },
             "port": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
             }
         }
       },
@@ -78,17 +92,26 @@
                         "type": "boolean"
                     },
                     "additionalRoles": {
-                        "type": "array"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        } 
                     },
                     "additionalClusterRoles": {
-                        "type": "array"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        } 
                     }
                 }
             },
             "clusterRoleBinding": {
                 "properties": {
                     "clusterRoles": {
-                        "type": "array"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        } 
                     }
                 }
             }
@@ -143,5 +166,5 @@
     ],
     "title": "Values",
     "type": "object"
-  }
+}
   

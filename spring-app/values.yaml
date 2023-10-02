@@ -1,8 +1,5 @@
 app:
-  name: todo-api
   replicas: 1
-  image: beer1/todo-server-kotlin:0.1.0
-  port: 9000
   customCommand: []
   customArgs: []
   env: []
@@ -16,7 +13,7 @@ probes:
   liveness: {}
 
 service:
-  enabled: true
+  enabled: false
   port: 80
 
 rbac:
