@@ -1,0 +1,147 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "properties": {
+      "app": {
+        "description": "app",
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "replicas": {
+                "type": "integer"
+            },
+            "image": {
+                "type": "string"
+            },
+            "port": {
+                "type": "integer"
+            },
+            "customCommand": {
+                "type": "array"
+            },
+            "customArgs": {
+                "type": "array"
+            },
+            "env": {
+                "type": "array"
+            },
+            "resources": {
+                "type": "object"
+            }
+        },
+        "required": [
+            "name",
+            "replicas",
+            "image",
+            "port"
+        ]
+      },
+      "podAnnotations": {
+        "description": "pod annotations",
+        "type": "object"
+      },
+      "podLabels": {
+        "description": "pod labels",
+        "type": "object"
+      },
+      "probes": {
+        "description": "pod probes",
+        "properties": {
+            "rediness": {
+                "type": "object"
+            },
+            "liveness": {
+                "type": "object"
+            }
+        }
+      },
+      "service": {
+        "description": "service",
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "port": {
+                "type": "integer"
+            }
+        }
+      },
+      "rbac": {
+        "description": "rbac",
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "roleBinding": {
+                "properties": {
+                    "autoCreate": {
+                        "type": "boolean"
+                    },
+                    "additionalRoles": {
+                        "type": "array"
+                    },
+                    "additionalClusterRoles": {
+                        "type": "array"
+                    }
+                }
+            },
+            "clusterRoleBinding": {
+                "properties": {
+                    "clusterRoles": {
+                        "type": "array"
+                    }
+                }
+            }
+        }
+      },
+      "applicationYamlConfig": {
+        "description": "spring boot application.yaml",
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "value": {
+                "type": "string"
+            }
+        }
+      },
+      "applicationYamlSecret": {
+        "description": "spring boot application.yaml",
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "value": {
+                "type": "string"
+            }
+        }
+      },
+      "ingress": {
+        "description": "ingress",
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "className": {
+                "type": "string"
+            },
+            "host": {
+                "type": "string"
+            },
+            "path": {
+                "type": "string"
+            },
+            "pathType": {
+                "type": "string",
+                "enum": [ "Prefix", "Exact" ]
+            }
+        }
+      }
+    },
+    "required": [
+      "app"
+    ],
+    "title": "Values",
+    "type": "object"
+  }
+  
