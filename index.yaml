@@ -3,10 +3,10 @@ entries:
   spring-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-10-09T15:47:31.175254+09:00"
+    created: "2023-10-09T16:09:43.541649+09:00"
     description: Spring application server
-    digest: bbacfc4bc63db798c90bb291f8ee8f0897099bbcff509607fe1828e8c961f3e3
-    home: https://chart.beerone.com
+    digest: d3b13dfd1b49f7c171c59a0da2c1099f68849959c8ef8856e270cbd44c07024e
+    home: https://beer-one.github.io/charts/
     kubeVersion: '>= 1.20.0'
     maintainers:
     - email: floidea2@gmail.com
@@ -15,4 +15,4 @@ entries:
     urls:
     - spring-app-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-09T15:47:31.174731+09:00"
+generated: "2023-10-09T16:09:43.541121+09:00"
