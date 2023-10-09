@@ -33,7 +33,10 @@
                 }    
             },
             "env": {
-                "type": "array"
+                "type": "array",
+                "items": {
+                    "type": "object"
+                }    
             },
             "resources": {
                 "type": "object"
