@@ -25,6 +25,10 @@ spec:
       {{- if .Values.rbac.enabled }}
       serviceAccount: {{ .Values.app.name }}
       {{- end }}
+      {{- if .Values.initContainers }}
+      initContainers:
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
       containers:
       - image: {{ .Values.app.image }}
         name: {{ .Values.app.name }}

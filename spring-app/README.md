@@ -14,6 +14,7 @@ SpringBoot 애플리케이션을 배포하는 차트입니다.  차트를 만든
 | `app.customCommand` | 애플리케이션 커맨드 | Array<\String> | N | `[]` |
 | `app.customArgs` | 애플리케이션 커맨드 인자 | Array<\String> | N | `[]` |
 | `app.resources` | 애플리케이션 리소스 req, lim <br>(https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources) | Object | N | `{}` |
+| `initContainers` | InitContainer가 필요하다면 추가 | Array<\Container> | N | `[]` |
 | `podAnnotations` | 파드 추가 애노테이션 | Object | N | `{}` |
 | `podLabels` | 파드 추가 레이블 | Object | N | `{}` |
 | `probes.readiness` | readinessProbe <br>(https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Probe) | Object | N | `{}` |
@@ -36,3 +37,9 @@ SpringBoot 애플리케이션을 배포하는 차트입니다.  차트를 만든
 | `ingress.host` | 인그레스에 사용될 호스트 | String | N | `""` |
 | `ingress.path` | 인그레스에 사용될 패스 | String | N | `""` |
 | `ingress.pathType` | 인그레스 패스 타입, `Prefix`, `Exact` 중 하나 | Enum | N | `Prefix` |
+
+
+## Version Patch
+
+### 0.1.1
+* `initContainers` 추가
