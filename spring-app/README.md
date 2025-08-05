@@ -12,6 +12,8 @@ SpringBoot 애플리케이션을 배포하는 차트입니다.  차트를 만든
 | `app.replicas` | 애플리케이션 레플리카 개수 | Integer | N | `1` |
 | `app.customCommand` | 애플리케이션 커맨드 | Array<\String> | N | `[]` |
 | `app.customArgs` | 애플리케이션 커맨드 인자 | Array<\String> | N | `[]` |
+| `app.env` | 애플리케이션 환경변수 | Array<\Env> | N | `[]` |
+| `app.envFrom` | 애플리케이션 환경변수 | Array<\Env> | N | `[]` |
 | `app.resources` | 애플리케이션 리소스 req, lim <br>(https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources) | Object | N | `{}` |
 | `initContainers` | InitContainer가 필요하다면 추가 | Array<\Container> | N | `[]` |
 | `podAnnotations` | 파드 추가 애노테이션 | Object | N | `{}` |
@@ -36,12 +38,18 @@ SpringBoot 애플리케이션을 배포하는 차트입니다.  차트를 만든
 | `ingress.host` | 인그레스에 사용될 호스트 | String | N | `""` |
 | `ingress.path` | 인그레스에 사용될 패스 | String | N | `""` |
 | `ingress.pathType` | 인그레스 패스 타입, `Prefix`, `Exact` 중 하나 | Enum | N | `Prefix` |
+| `schedule.affinity` | Affinity 설정 | N | `{}` |
+| `schedule.topologySpreadConstraints` | Pod Topology SpreadC onstraints 설정 | N | `[]` |
+| `schedule.tolerations` | Toleration 설정 | N | `[]` |
+
 
 
 ## Version Patch
 
 ### 0.1.2
 * `app.name` 제거, `.Release.Name`으로 대체
+* `app.envFrom` 추가
+* `schedule.affinity`, `schedule.topologySpreadConstraints`, `schedule.tolerations` 추가
 
 ### 0.1.1
 * `initContainers` 추가

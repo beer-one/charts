@@ -22,6 +22,16 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
+      {{- if .Values.schedule.affinity }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if .Values.schedule.topologySpreadConstraints }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if .Values.schedule.tolerations }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if }}
       {{- if .Values.rbac.enabled }}
       serviceAccount: {{ .Release.Name }}
       {{- end }}
@@ -46,6 +56,10 @@ spec:
         {{- end }}
         {{- with .Values.app.env }}
         env:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.app.envFrom }}
+        envFrom:
           {{- toYaml . | nindent 10 }}
         {{- end }}
         {{- with .Values.app.resources }}

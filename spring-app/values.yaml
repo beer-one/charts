@@ -14,6 +14,11 @@ probes:
   readiness: {}
   liveness: {}
 
+schedule:
+  topologySpreadConstraints: []
+  affinity: {}
+  tolerations: []
+
 service:
   enabled: false
   port: 80
