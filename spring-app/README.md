@@ -7,7 +7,6 @@ SpringBoot 애플리케이션을 배포하는 차트입니다.  차트를 만든
 
 | Name | Description | Type | Required | Default |
 |------|-------------|-----|----------|----------|
-| `app.name` | 애플리케이션 이름 | String | Y | |
 | `app.image` | 애플리케이션 이미지 이름 | String | Y | |
 | `app.port` | 애플리케이션 컨테이너 포트 | Integer | Y | |
 | `app.replicas` | 애플리케이션 레플리카 개수 | Integer | N | `1` |
@@ -40,6 +39,9 @@ SpringBoot 애플리케이션을 배포하는 차트입니다.  차트를 만든
 
 
 ## Version Patch
+
+### 0.1.2
+* `app.name` 제거, `.Release.Name`으로 대체
 
 ### 0.1.1
 * `initContainers` 추가

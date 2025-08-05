@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: {{ .Values.app.name }}
-  name: {{ .Values.app.name }}
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace | quote }}
 spec:
   replicas: {{ .Values.app.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.app.name }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -17,13 +17,13 @@ spec:
         {{- toYaml . | nindent 8 }}    
       {{- end }}
       labels:
-        app: {{ .Values.app.name }}
+        app: {{ .Release.Name }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
       {{- if .Values.rbac.enabled }}
-      serviceAccount: {{ .Values.app.name }}
+      serviceAccount: {{ .Release.Name }}
       {{- end }}
       {{- if .Values.initContainers }}
       initContainers:
@@ -31,7 +31,7 @@ spec:
       {{- end }}
       containers:
       - image: {{ .Values.app.image }}
-        name: {{ .Values.app.name }}
+        name: {{ .Release.Name }}
         ports:
           - name: http
             protocol: TCP
