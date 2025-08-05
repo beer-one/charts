@@ -5,9 +5,6 @@
         "description": "app",
         "type": "object",
         "properties": {
-            "name": {
-                "type": "string"
-            },
             "replicas": {
                 "type": "integer",
                 "minimum": 0
@@ -38,12 +35,17 @@
                     "type": "object"
                 }    
             },
+            "envFrom": {
+                "type": "array",
+                "items": {
+                    "type": "object"
+                }    
+            },
             "resources": {
                 "type": "object"
             }
         },
         "required": [
-            "name",
             "image",
             "port"
         ]
@@ -157,6 +159,20 @@
             "pathType": {
                 "type": "string",
                 "enum": [ "Prefix", "Exact" ]
+            }
+        }
+      },
+      "schedule": {
+        "desciption": "fields of pod schedules",
+        "properties": {
+            "affinity": {
+                "type": "object"
+            },
+            "topologySpreadConstraints": {
+                "type": "array"
+            },
+            "tolerations": {
+                "type": "array"
             }
         }
       }

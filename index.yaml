@@ -3,9 +3,9 @@ entries:
   spring-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-08-05T21:30:17.195807+09:00"
+    created: "2025-08-05T21:34:37.865868+09:00"
     description: Spring application server
-    digest: 7caba42a70e3dd364129fdf81a0e09a402f8d49296ecb5720c1c7e4ceab5c718
+    digest: 0aa0c1ee354e6e106b0bbe5cb38443e3c3059b83966376515e87e72db53d70c9
     home: https://beer-one.github.io/charts/
     kubeVersion: '>= 1.20.0'
     maintainers:
@@ -17,7 +17,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-08-05T21:30:17.195243+09:00"
+    created: "2025-08-05T21:34:37.86542+09:00"
     description: Spring application server
     digest: 35da310716f59638497f1979bd549ab4878e3b106cce32b0514d352f80731339
     home: https://beer-one.github.io/charts/
@@ -31,7 +31,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-08-05T21:30:17.193617+09:00"
+    created: "2025-08-05T21:34:37.864944+09:00"
     description: Spring application server
     digest: 1b3fb35b7b634f69167f8d0b0ef7d5ca2e56c37d9141ee27953cb4b9554cdcee
     home: https://beer-one.github.io/charts/
@@ -43,4 +43,4 @@ entries:
     urls:
     - spring-app-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-05T21:30:17.1398+09:00"
+generated: "2025-08-05T21:34:37.864296+09:00"
