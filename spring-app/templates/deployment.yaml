@@ -31,7 +31,6 @@ spec:
       {{- if .Values.schedule.tolerations }}
       {{- toYaml . | nindent 6 }}
       {{- end }}
-      {{- if }}
       {{- if .Values.rbac.enabled }}
       serviceAccount: {{ .Release.Name }}
       {{- end }}
