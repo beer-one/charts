@@ -1,11 +1,67 @@
 app:
-  name: todo-api
+  image: "beer1/meal-calender-api:dev"
   replicas: 1
-  image: beer1/todo-server-kotlin:0.1.0
-  port: 9000
+  env:
+    - name: APP_ENV
+      value: "dev"
+    - name: "IMAGE_SAVE_DIR" 
+      value: /images
+    - name: "IMAGE_URL"
+      value: http://dev.meal-calender.com/images
+  envFrom:
+    - secretRef:
+        name: meal-calender-mysql-credential
+    - secretRef:
+        name: meal-calender-jwt
+  resources:
+    requests:
+      memory: 128Mi
+    limts:
+      memory: 128Mi
+  port: 8080
+podLabels: 
+  project: meal-calender
 
 probes:
-  readiness: 
-   a: 1
-  liveness:
-   b: 2
+  readiness:
+    httpGet:
+      path: /health
+      port: 8080
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 2
+    successThreshold: 1
+    
+  liveness: 
+    httpGet:
+      path: /health
+      port: 8080
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 2
+    successThreshold: 1
+
+service:
+  enabled: true
+
+volumes:
+  - name: images
+    hostPath:
+      path: /Users/beer1/Project/meal-calender/images
+      type: Directory
+
+volumeMounts:
+  - name: images
+    mountPath: /images  # 파드 내부에서 접근할 경로
+
+schedule:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - antarctica-east1
+            - antarctica-west1
