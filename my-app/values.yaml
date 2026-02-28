@@ -1,0 +1,40 @@
+app:
+  replicas: 1
+  customCommand: []
+  customArgs: []
+  env: []
+  resources: {}
+
+initContainers: []
+
+podAnnotations: {}
+podLabels: {}
+
+probes:
+  readiness: {}
+  liveness: {}
+
+schedule:
+  topologySpreadConstraints: []
+  affinity: {}
+  tolerations: []
+
+service:
+  enabled: false
+  port: 80
+
+rbac:
+  enabled: false
+  roleBinding:
+    autoCreate: true
+    additionalRoles: []
+    additionalClusterRoles: []
+  clusterRoleBinding:
+    clusterRoles: []
+
+ingress:
+  enabled: false
+  className: nginx
+  host: ""
+  path: ""
+  pathType: Prefix
