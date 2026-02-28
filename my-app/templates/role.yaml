@@ -1,0 +1,13 @@
+{{- if .Values.rbac.enabled }}
+{{- if .Values.rbac.roleBinding.autoCreate }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: "{{ .Release.Name }}-spring-role"
+  namespace: {{ .Release.Namespace | quote }}
+rules:
+- apiGroups: [""] 
+  resources: ["pods", "configmaps", "secrets", "services", "endpoints"]
+  verbs: ["get", "watch", "list"]
+{{- end }}
+{{- end }}

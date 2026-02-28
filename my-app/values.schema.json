@@ -1,0 +1,148 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "properties": {
+      "app": {
+        "description": "app",
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "replicas": {
+                "type": "integer",
+                "minimum": 0
+            },
+            "image": {
+                "type": "string"
+            },
+            "port": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+            },
+            "customCommand": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }    
+            },
+            "customArgs": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }    
+            },
+            "env": {
+                "type": "array",
+                "items": {
+                    "type": "object"
+                }    
+            },
+            "resources": {
+                "type": "object"
+            }
+        },
+        "required": [
+            "name",
+            "image",
+            "port"
+        ]
+      },
+      "podAnnotations": {
+        "description": "pod annotations",
+        "type": "object"
+      },
+      "podLabels": {
+        "description": "pod labels",
+        "type": "object"
+      },
+      "probes": {
+        "description": "pod probes",
+        "properties": {
+            "rediness": {
+                "type": "object"
+            },
+            "liveness": {
+                "type": "object"
+            }
+        }
+      },
+      "service": {
+        "description": "service",
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "port": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+            }
+        }
+      },
+      "rbac": {
+        "description": "rbac",
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "roleBinding": {
+                "properties": {
+                    "autoCreate": {
+                        "type": "boolean"
+                    },
+                    "additionalRoles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        } 
+                    },
+                    "additionalClusterRoles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        } 
+                    }
+                }
+            },
+            "clusterRoleBinding": {
+                "properties": {
+                    "clusterRoles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        } 
+                    }
+                }
+            }
+        }
+      },
+      "ingress": {
+        "description": "ingress",
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "className": {
+                "type": "string"
+            },
+            "host": {
+                "type": "string"
+            },
+            "path": {
+                "type": "string"
+            },
+            "pathType": {
+                "type": "string",
+                "enum": [ "Prefix", "Exact" ]
+            }
+        }
+      }
+    },
+    "required": [
+      "app"
+    ],
+    "title": "Values",
+    "type": "object"
+}
+  

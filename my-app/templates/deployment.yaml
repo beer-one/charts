@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}    
+      {{- end }}
+      labels:
+        app: {{ .Release.Name }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- if .Values.schedule.affinity }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if .Values.schedule.topologySpreadConstraints }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if .Values.schedule.tolerations }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if }}
+      {{- if .Values.rbac.enabled }}
+      serviceAccount: {{ .Release.Name }}
+      {{- end }}
+      {{- if .Values.initContainers }}
+      initContainers:
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
+      containers:
+      - image: {{ .Values.app.image }}
+        name: {{ .Release.Name }}
+        ports:
+          - name: http
+            protocol: TCP
+            containerPort: {{ .Values.app.port }}
+        {{- with .Values.app.customCommand }}
+        command: 
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.app.customArgs }}
+        args:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.app.env }}
+        env:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.app.envFrom }}
+        envFrom:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.app.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.probes.readiness }}
+        readinessProbe:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.probes.liveness }}
+        livenessProbe:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        
+
