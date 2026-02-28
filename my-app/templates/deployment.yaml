@@ -23,22 +23,27 @@ spec:
         {{- end }}
     spec:
       {{- if .Values.schedule.affinity }}
+      {{- with .Values.schedule.affinitys }}
       {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- if .Values.schedule.topologySpreadConstraints }}
+      {{- with .Values.schedule.topologySpreadConstraints }}
       {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- if .Values.schedule.tolerations }}
+      {{- with .Values.schedule.tolerations }}
       {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- if .Values.rbac.enabled }}
       serviceAccount: {{ .Release.Name }}
       {{- end }}
       {{- if .Values.initContainers }}
+      {{- with .Values.initContainers}}
       initContainers:
       {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- if .Values.volumes }}
+      {{- with .Values.volumes }}
       volumes:
       {{- toYaml . | nindent 6 }}
       {{- end }}
