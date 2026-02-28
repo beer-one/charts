@@ -3,9 +3,9 @@ entries:
   my-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T09:11:16.745907299Z"
+    created: "2026-02-28T09:18:12.572159025Z"
     description: my application
-    digest: d2e33ae18608935c4cac2d5385f78c451614737c6d13136470faf03228a22242
+    digest: c3fc369f48b9b3af026f5c87b6fb67faa6601fc8f6bd41cb8f9e60bb9e10515d
     home: https://beer-one.github.io/charts/
     kubeVersion: '>= 1.20.0'
     maintainers:
@@ -17,7 +17,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T09:11:16.745526188Z"
+    created: "2026-02-28T09:18:12.571796379Z"
     description: my application
     digest: 36e41d32f500e5c4d9dc33e8c4fcb38f05679d17e55be515c3ff4ac4a38dcc3d
     home: https://beer-one.github.io/charts/
@@ -32,7 +32,7 @@ entries:
   spring-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T09:11:16.747062725Z"
+    created: "2026-02-28T09:18:12.573291196Z"
     description: Spring application server
     digest: 7caba42a70e3dd364129fdf81a0e09a402f8d49296ecb5720c1c7e4ceab5c718
     home: https://beer-one.github.io/charts/
@@ -46,7 +46,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T09:11:16.746629407Z"
+    created: "2026-02-28T09:18:12.572875213Z"
     description: Spring application server
     digest: 35da310716f59638497f1979bd549ab4878e3b106cce32b0514d352f80731339
     home: https://beer-one.github.io/charts/
@@ -60,7 +60,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T09:11:16.746264255Z"
+    created: "2026-02-28T09:18:12.572505858Z"
     description: Spring application server
     digest: 1b3fb35b7b634f69167f8d0b0ef7d5ca2e56c37d9141ee27953cb4b9554cdcee
     home: https://beer-one.github.io/charts/
@@ -72,4 +72,4 @@ entries:
     urls:
     - https://beer-one.github.io/charts/spring-app-0.1.0.tgz
     version: 0.1.0
-generated: "2026-02-28T09:11:16.744992593Z"
+generated: "2026-02-28T09:18:12.571205793Z"
