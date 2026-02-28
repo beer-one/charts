@@ -137,6 +137,16 @@
                 "enum": [ "Prefix", "Exact" ]
             }
         }
+      },
+
+      "volumes": {
+        "description": "volumes",
+        "type": "array"
+      },
+
+      "volumesMounts": {
+        "description": "volumeMounts",
+        "type": "array"
       }
     },
     "required": [

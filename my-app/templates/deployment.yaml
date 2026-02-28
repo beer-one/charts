@@ -39,6 +39,10 @@ spec:
       initContainers:
       {{- toYaml . | nindent 6 }}
       {{- end }}
+      {{- if .Values.volumes }}
+      volumes:
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
       containers:
       - image: {{ .Values.app.image }}
         name: {{ .Release.Name }}
@@ -72,6 +76,10 @@ spec:
         {{- end }}
         {{- with .Values.probes.liveness }}
         livenessProbe:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.volumeMounts }}
+        volumeMounts:
           {{- toYaml . | nindent 10 }}
         {{- end }}
         
