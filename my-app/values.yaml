@@ -38,3 +38,6 @@ ingress:
   host: ""
   path: ""
   pathType: Prefix
+
+volumes: []
+volumeMounts: []

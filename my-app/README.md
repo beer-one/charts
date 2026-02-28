@@ -33,3 +33,10 @@
 | `schedule.affinity` | Affinity 설정 | N | `{}` |
 | `schedule.topologySpreadConstraints` | Pod Topology SpreadC onstraints 설정 | N | `[]` |
 | `schedule.tolerations` | Toleration 설정 | N | `[]` |
+| `volumes` | 볼륨 설정 | N | `[]` |
+| `volumeMounts` | 볼륨 마운트 설정 | N | `[]` |
+
+## Version patches
+
+### 0.1.1
+* volumes, volumeMounts 추가
