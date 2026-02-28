@@ -1,0 +1,77 @@
+name: Release Helm Chart
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    permissions:
+      contents: write
+
+    steps:
+      - name: Extract chart name and version from branch name
+        id: meta
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+          CHART_NAME=$(echo "$BRANCH" | cut -d'/' -f1)
+          VERSION=$(echo "$BRANCH" | cut -d'/' -f2-)
+          echo "chart_name=$CHART_NAME" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Checkout release branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          path: release-branch
+
+      - name: Validate chart directory exists
+        run: |
+          if [ ! -d "release-branch/${{ steps.meta.outputs.chart_name }}" ]; then
+            echo "Chart directory '${{ steps.meta.outputs.chart_name }}' not found"
+            exit 1
+          fi
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+
+      - name: Lint chart
+        run: helm lint release-branch/${{ steps.meta.outputs.chart_name }}
+
+      - name: Package chart
+        run: |
+          helm package release-branch/${{ steps.meta.outputs.chart_name }} --destination /tmp/charts
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main-branch
+
+      - name: Update repo index and push to main
+        run: |
+          cp /tmp/charts/*.tgz main-branch/
+          cd main-branch
+
+          helm repo index . \
+            --url https://beer-one.github.io/charts/ \
+            --merge index.yaml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          CHART_NAME="${{ steps.meta.outputs.chart_name }}"
+          VERSION="${{ steps.meta.outputs.version }}"
+
+          git add "${CHART_NAME}-${VERSION}.tgz" index.yaml
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "release ${CHART_NAME} ${VERSION}"
+          git push
+
+          git tag "${CHART_NAME}-${VERSION}"
+          git push origin "${CHART_NAME}-${VERSION}"
