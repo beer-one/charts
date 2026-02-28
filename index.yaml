@@ -3,9 +3,9 @@ entries:
   my-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T08:47:03.07215643Z"
+    created: "2026-02-28T08:57:24.116240765Z"
     description: my application
-    digest: 6a87d9c75e19294db11f57ab6b8df6785377964d2aa2dc82e9595487a93b4ef0
+    digest: bd6a94d00b6ea934304143c142662dab23d2359df3dcf6663a29cc15cca2fa33
     home: https://beer-one.github.io/charts/
     kubeVersion: '>= 1.20.0'
     maintainers:
@@ -17,7 +17,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T08:47:03.07182251Z"
+    created: "2026-02-28T08:57:24.115838055Z"
     description: my application
     digest: 36e41d32f500e5c4d9dc33e8c4fcb38f05679d17e55be515c3ff4ac4a38dcc3d
     home: https://beer-one.github.io/charts/
@@ -32,7 +32,7 @@ entries:
   spring-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T08:47:03.073156335Z"
+    created: "2026-02-28T08:57:24.117273388Z"
     description: Spring application server
     digest: 7caba42a70e3dd364129fdf81a0e09a402f8d49296ecb5720c1c7e4ceab5c718
     home: https://beer-one.github.io/charts/
@@ -46,7 +46,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T08:47:03.072851329Z"
+    created: "2026-02-28T08:57:24.116903359Z"
     description: Spring application server
     digest: 35da310716f59638497f1979bd549ab4878e3b106cce32b0514d352f80731339
     home: https://beer-one.github.io/charts/
@@ -60,7 +60,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-02-28T08:47:03.072522278Z"
+    created: "2026-02-28T08:57:24.116574606Z"
     description: Spring application server
     digest: 1b3fb35b7b634f69167f8d0b0ef7d5ca2e56c37d9141ee27953cb4b9554cdcee
     home: https://beer-one.github.io/charts/
@@ -72,4 +72,4 @@ entries:
     urls:
     - https://beer-one.github.io/charts/spring-app-0.1.0.tgz
     version: 0.1.0
-generated: "2026-02-28T08:47:03.071303727Z"
+generated: "2026-02-28T08:57:24.115355456Z"
