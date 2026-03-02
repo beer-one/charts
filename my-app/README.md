@@ -6,6 +6,7 @@
 | Name | Description | Type | Required | Default |
 |------|-------------|-----|----------|----------|
 | `app.image` | 애플리케이션 이미지 이름 | String | Y | |
+| `app.imagePullPolicy` | 애플리케이션 이미지 풀 정책 (Always, IfNotPresent, Never) | String | | IfNotPresent |
 | `app.port` | 애플리케이션 컨테이너 포트 | Integer | Y | |
 | `app.replicas` | 애플리케이션 레플리카 개수 | Integer | N | `1` |
 | `app.customCommand` | 애플리케이션 커맨드 | Array<\String> | N | `[]` |
@@ -40,3 +41,4 @@
 
 ### 0.1.1
 * volumes, volumeMounts 추가
+* app.imagePullPolicy 추가

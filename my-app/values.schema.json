@@ -12,6 +12,9 @@
             "image": {
                 "type": "string"
             },
+            "imagePullPolicy": {
+                "type": "string"
+            },
             "port": {
                 "type": "integer",
                 "minimum": 0,
