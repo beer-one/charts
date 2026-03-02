@@ -44,6 +44,7 @@ spec:
       {{- end }}
       containers:
       - image: {{ .Values.app.image }}
+        imagePullPolicy: {{ .Values.app.imagePullPolicy }}
         name: {{ .Release.Name }}
         ports:
           - name: http
