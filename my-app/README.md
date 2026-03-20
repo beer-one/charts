@@ -13,7 +13,6 @@
 | `app.customArgs` | 애플리케이션 커맨드 인자 | Array<\String> | N | `[]` |
 | `app.env` | 애플리케이션 환경변수 | Array<\Env> | N | `[]` |
 | `app.envFrom` | 애플리케이션 환경변수 | Array<\Env> | N | `[]` |
-| `app.resources` | 애플리케이션 리소스 req, lim <br>(https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources) | Object | N | `{}` |
 | `initContainers` | InitContainer가 필요하다면 추가 | Array<\Container> | N | `[]` |
 | `podAnnotations` | 파드 추가 애노테이션 | Object | N | `{}` |
 | `podLabels` | 파드 추가 레이블 | Object | N | `{}` |
@@ -36,8 +35,20 @@
 | `schedule.tolerations` | Toleration 설정 | N | `[]` |
 | `volumes` | 볼륨 설정 | N | `[]` |
 | `volumeMounts` | 볼륨 마운트 설정 | N | `[]` |
+| `resources` | 애플리케이션 리소스 req, lim <br>(https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources) | Object | N | CPU: "10m", memory: "128Mi" |
+| `securityContext.runAsUser` | 컨테이너 uid 설정 | N | 1000 |
+| `securityContext.fsGroup` | 컨테이너 fsGroup 설정 | N | 1000 |
 
 ## Version patches
+
+### 0.1.2
+* 보안 컴플라이언스 추가
+    * `securityContext.runAsUser`
+    * `securityContext.fsGroup`
+* dnsConfig ndots=2 추가
+* 리소스 설정 강제
+    * CPU는 requests만
+    * Memory는 requests, limits를 동일하게
 
 ### 0.1.1
 * volumes, volumeMounts 추가

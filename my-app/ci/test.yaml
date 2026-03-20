@@ -13,11 +13,7 @@ app:
         name: meal-calender-mysql-credential
     - secretRef:
         name: meal-calender-jwt
-  resources:
-    requests:
-      memory: 128Mi
-    limts:
-      memory: 128Mi
+  
   port: 8080
 podLabels: 
   project: meal-calender
@@ -65,3 +61,7 @@ schedule:
             values:
             - antarctica-east1
             - antarctica-west1
+
+resources:
+  memory: 128Mi
+  cpu: 0.5
