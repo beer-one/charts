@@ -30,6 +30,12 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           path: release-branch
 
+      - name: Extract chart type
+        id: chart_meta
+        run: |
+          CHART_TYPE=$(grep '^type:' release-branch/${{ steps.meta.outputs.chart_name }}/Chart.yaml | awk '{print $2}')
+          echo "chart_type=${CHART_TYPE:-application}" >> $GITHUB_OUTPUT
+
       - name: Validate chart directory exists
         run: |
           if [ ! -d "release-branch/${{ steps.meta.outputs.chart_name }}" ]; then
@@ -39,6 +45,11 @@ jobs:
 
       - name: Set up Helm
         uses: azure/setup-helm@v4
+
+      - name: Build chart dependencies
+        if: steps.chart_meta.outputs.chart_type == 'application'
+        run: |
+          helm dependency build release-branch/${{ steps.meta.outputs.chart_name }}
 
       - name: Package chart
         run: |
