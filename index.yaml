@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   common-rule:
   - apiVersion: v2
-    created: "2026-03-20T15:42:26.013155431Z"
+    created: "2026-03-20T15:43:49.403488212Z"
     description: common security compliance rules
     digest: 7255385834aae37447c5e1d3072d5590b9ba8d5a7d5320bdc2b72f22401c29b2
     home: https://beer-one.github.io/charts/
@@ -17,13 +17,13 @@ entries:
   my-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-03-20T15:42:26.014382964Z"
+    created: "2026-03-20T15:43:49.405491419Z"
     dependencies:
     - name: common-rule
       repository: https://beer-one.github.io/charts
       version: 0.1.0
     description: my application
-    digest: 20f31476376ed58e84028895215a1552f2dae82f61904fabed5f4fe4d961e43a
+    digest: 61ddb2932c49db63e2a664187dc9423723cbb98d5585cc87c905296cad5f3878
     home: https://beer-one.github.io/charts/
     kubeVersion: '>= 1.20.0'
     maintainers:
@@ -35,7 +35,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-03-20T15:42:26.013873078Z"
+    created: "2026-03-20T15:43:49.404963642Z"
     description: my application
     digest: 5c192ea362eb5cc6b62304efaa84c8664be20365be0a2ab5da7244cdea64360b
     home: https://beer-one.github.io/charts/
@@ -49,7 +49,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-03-20T15:42:26.013519871Z"
+    created: "2026-03-20T15:43:49.404252281Z"
     description: my application
     digest: 36e41d32f500e5c4d9dc33e8c4fcb38f05679d17e55be515c3ff4ac4a38dcc3d
     home: https://beer-one.github.io/charts/
@@ -64,7 +64,7 @@ entries:
   spring-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-03-20T15:42:26.015243369Z"
+    created: "2026-03-20T15:43:49.406509001Z"
     description: Spring application server
     digest: 7caba42a70e3dd364129fdf81a0e09a402f8d49296ecb5720c1c7e4ceab5c718
     home: https://beer-one.github.io/charts/
@@ -78,7 +78,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-03-20T15:42:26.014953841Z"
+    created: "2026-03-20T15:43:49.406162153Z"
     description: Spring application server
     digest: 35da310716f59638497f1979bd549ab4878e3b106cce32b0514d352f80731339
     home: https://beer-one.github.io/charts/
@@ -92,7 +92,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-03-20T15:42:26.014672427Z"
+    created: "2026-03-20T15:43:49.405858565Z"
     description: Spring application server
     digest: 1b3fb35b7b634f69167f8d0b0ef7d5ca2e56c37d9141ee27953cb4b9554cdcee
     home: https://beer-one.github.io/charts/
@@ -104,4 +104,4 @@ entries:
     urls:
     - https://beer-one.github.io/charts/spring-app-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-20T15:42:26.012858214Z"
+generated: "2026-03-20T15:43:49.402872461Z"
