@@ -82,7 +82,7 @@ spec:
           {{- toYaml . | nindent 10 }}
         {{- end }}
 
-        {{- include "common-rule.resources" . | nindent 6 }}
+        {{- include "common-rule.resources" . | nindent 8 }}
         {{- include "common-rule.containerSecurityContext" . | nindent 8 }}
         
 
