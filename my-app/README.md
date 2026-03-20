@@ -37,14 +37,12 @@
 | `volumeMounts` | 볼륨 마운트 설정 | N | `[]` |
 | `resources` | 애플리케이션 리소스 req, lim <br>(https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources) | Object | N | CPU: "10m", memory: "128Mi" |
 | `securityContext.runAsUser` | 컨테이너 uid 설정 | N | 1000 |
-| `securityContext.fsGroup` | 컨테이너 fsGroup 설정 | N | 1000 |
 
 ## Version patches
 
 ### 0.1.2
 * 보안 컴플라이언스 추가
     * `securityContext.runAsUser`
-    * `securityContext.fsGroup`
 * dnsConfig ndots=2 추가
 * 리소스 설정 강제
     * CPU는 requests만
