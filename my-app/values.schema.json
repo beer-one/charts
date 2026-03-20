@@ -167,11 +167,6 @@
                 "type": "integer",
                 "minimum": 0,
                 "maximum": 65535
-            },
-            "fsGroup": {
-                "type": "integer",
-                "minimum": 0,
-                "maximum": 65535
             }
         }
       }
