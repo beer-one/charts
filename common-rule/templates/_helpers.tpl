@@ -4,6 +4,7 @@ Pod-level securityContext
 {{- define "common-rule.podSecurityContext" -}}
 securityContext:
   runAsNonRoot: true
+  fsGroup: {{ .Values.securityContext.fsGroup }}
   seccompProfile:
     type: "RuntimeDefault"
 {{- end -}}
@@ -19,7 +20,6 @@ securityContext:
     drop:
       - "ALL"
   runAsUser: {{ .Values.securityContext.runAsUser }}
-  fsGroup: {{ .Values.securityContext.fsGroup }}
 {{- end -}}
 
 {{/*
