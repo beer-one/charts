@@ -42,6 +42,9 @@ spec:
       volumes:
       {{- toYaml . | nindent 6 }}
       {{- end }}
+      {{- include "common-rule.dnsConfig" . | nindent 6 }}
+      {{- include "common-rule.podSecurityContext" . | nindent 6 }}
+      {{- include "common-rule.nodeNamespaceShareRestrict" . | nindent 6 }}
       containers:
       - image: {{ .Values.app.image }}
         imagePullPolicy: {{ .Values.app.imagePullPolicy }}
@@ -66,10 +69,6 @@ spec:
         envFrom:
           {{- toYaml . | nindent 10 }}
         {{- end }}
-        {{- with .Values.app.resources }}
-        resources:
-          {{- toYaml . | nindent 10 }}
-        {{- end }}
         {{- with .Values.probes.readiness }}
         readinessProbe:
           {{- toYaml . | nindent 10 }}
@@ -82,5 +81,8 @@ spec:
         volumeMounts:
           {{- toYaml . | nindent 10 }}
         {{- end }}
+
+        {{- include "common-rule.resources" . | nindent 6 }}
+        {{- include "common-rule.containerSecurityContext" . | nindent 8 }}
         
 

@@ -4,7 +4,10 @@ app:
   customCommand: []
   customArgs: []
   env: []
-  resources: {}
+
+resources:
+  cpu: "10m"
+  memory: "128Mi"
 
 initContainers: []
 
@@ -42,3 +45,7 @@ ingress:
 
 volumes: []
 volumeMounts: []
+
+securityContext:
+  runAsUser: 1000
+  fsGroup: 1000

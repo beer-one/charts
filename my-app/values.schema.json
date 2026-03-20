@@ -37,9 +37,6 @@
                 "items": {
                     "type": "object"
                 }    
-            },
-            "resources": {
-                "type": "object"
             }
         },
         "required": [
@@ -146,6 +143,37 @@
       "volumesMounts": {
         "description": "volumeMounts",
         "type": "array"
+      },
+      "resources": {
+        "type": "object",
+        "properties": {
+          "cpu": {
+            "oneOf": [
+              { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?(m)?$" },
+              { "type": "number" }
+            ]
+          },
+          "memory": {
+            "type": "string",
+            "pattern": "^[0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K|m)?$"
+          }
+        }    
+      },
+      "securityContext": {
+        "description": "pod security context",
+        "type": "object",
+        "properties": {
+            "runAsUser": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+            },
+            "fsGroup": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+            }
+        }
       }
     },
     "required": [
