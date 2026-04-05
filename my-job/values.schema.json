@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "properties": {
+    "cronjob": {
+      "description": "cronjob",
+      "type": "object",
+      "properties": {
+        "schedule": {
+          "type": "string"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "concurrencyPolicy": {
+          "type": "string",
+          "enum": ["Allow", "Forbid", "Replace"]
+        },
+        "suspend": {
+          "type": "boolean"
+        },
+        "startingDeadlineSeconds": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "successfulJobsHistoryLimit": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failedJobsHistoryLimit": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": ["schedule"]
+    },
+    "job": {
+      "description": "job",
+      "type": "object",
+      "properties": {
+        "backoffLimit": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "activeDeadlineSeconds": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "ttlSecondsAfterFinished": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "parallelism": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "completions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "restartPolicy": {
+          "type": "string",
+          "enum": ["OnFailure", "Never"]
+        }
+      }
+    },
+    "app": {
+      "description": "app",
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string"
+        },
+        "imagePullPolicy": {
+          "type": "string"
+        },
+        "customCommand": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "customArgs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "env": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      },
+      "required": ["image"]
+    },
+    "podAnnotations": {
+      "description": "pod annotations",
+      "type": "object"
+    },
+    "podLabels": {
+      "description": "pod labels",
+      "type": "object"
+    },
+    "rbac": {
+      "description": "rbac",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "roleBinding": {
+          "properties": {
+            "autoCreate": {
+              "type": "boolean"
+            },
+            "additionalRoles": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "additionalClusterRoles": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "clusterRoleBinding": {
+          "properties": {
+            "clusterRoles": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "volumes": {
+      "description": "volumes",
+      "type": "array"
+    },
+    "volumeMounts": {
+      "description": "volumeMounts",
+      "type": "array"
+    },
+    "resources": {
+      "type": "object",
+      "properties": {
+        "cpu": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?(m)?$" },
+            { "type": "number" }
+          ]
+        },
+        "memory": {
+          "type": "string",
+          "pattern": "^[0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K|m)?$"
+        }
+      }
+    },
+    "securityContext": {
+      "description": "pod security context",
+      "type": "object",
+      "properties": {
+        "runAsUser": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    }
+  },
+  "required": ["cronjob", "app"],
+  "title": "Values",
+  "type": "object"
+}

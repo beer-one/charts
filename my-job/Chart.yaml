@@ -1,0 +1,14 @@
+apiVersion: v2
+name: my-job
+version: 0.1.0
+appVersion: 0.1.0
+kubeVersion: ">= 1.21.0"
+description: "my cronjob"
+home: https://beer-one.github.io/charts/
+maintainers:
+  - name: beerone
+    email: floidea2@gmail.com
+dependencies:
+  - name: common-rule
+    version: 0.1.0
+    repository: "https://beer-one.github.io/charts"

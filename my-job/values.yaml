@@ -1,0 +1,51 @@
+cronjob:
+  schedule: "0 0 * * *"
+  timeZone: ""
+  concurrencyPolicy: Allow
+  suspend: false
+  startingDeadlineSeconds: null
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+
+job:
+  backoffLimit: 6
+  activeDeadlineSeconds: null
+  ttlSecondsAfterFinished: null
+  parallelism: 1
+  completions: 1
+  restartPolicy: OnFailure
+
+app:
+  imagePullPolicy: "IfNotPresent"
+  customCommand: []
+  customArgs: []
+  env: []
+
+resources:
+  cpu: "10m"
+  memory: "128Mi"
+
+initContainers: []
+
+podAnnotations: {}
+podLabels: {}
+
+schedule:
+  topologySpreadConstraints: []
+  affinity: {}
+  tolerations: []
+
+rbac:
+  enabled: false
+  roleBinding:
+    autoCreate: true
+    additionalRoles: []
+    additionalClusterRoles: []
+  clusterRoleBinding:
+    clusterRoles: []
+
+volumes: []
+volumeMounts: []
+
+securityContext:
+  runAsUser: 1000
