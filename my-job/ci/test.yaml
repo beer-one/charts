@@ -1,0 +1,28 @@
+cronjob:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+
+job:
+  backoffLimit: 3
+  ttlSecondsAfterFinished: 600
+  restartPolicy: OnFailure
+
+app:
+  image: "busybox:1.36"
+  customCommand:
+    - /bin/sh
+    - -c
+  customArgs:
+    - "echo hello from my-job"
+  env:
+    - name: APP_ENV
+      value: "dev"
+
+podLabels:
+  project: my-job
+
+resources:
+  cpu: "10m"
+  memory: "64Mi"
